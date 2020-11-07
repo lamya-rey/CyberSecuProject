@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,6 +21,9 @@ public class Concessionnaire {
 	
 	@OneToMany(mappedBy = "concessionnaire")
 	private List<Adresse> adresses;
+	
+	@ManyToMany
+	private List<Marque> marques;
 	
 	
 	public Long getId() {
@@ -53,6 +57,13 @@ public class Concessionnaire {
 	}
 	public void setAdresses(List<Adresse> adresses) {
 		this.adresses = adresses;
+	}
+	
+	public List<Marque> getMarques() {
+		return marques;
+	}
+	public void setMarques(List<Marque> marques) {
+		this.marques = marques;
 	}
 	public Concessionnaire() {
 		super();
