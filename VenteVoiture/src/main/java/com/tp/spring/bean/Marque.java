@@ -10,8 +10,11 @@ public class Marque {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
 	private Long idMarq;
-	private String libelle;
+	private String libelleMarq;
+	private String modele;
+	
 	
 	
 	public long getId() {
@@ -27,13 +30,20 @@ public class Marque {
 	public void setIdMarq(Long idMarq) {
 		this.idMarq = idMarq;
 	}
-	public String getLibelle() {
-		return libelle;
+	
+	public String getLibelleMarq() {
+		return libelleMarq;
 	}
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibelleMarq(String libelleMarq) {
+		this.libelleMarq = libelleMarq;
 	}
 	
+	public String getModele() {
+		return modele;
+	}
+	public void setModele(String modele) {
+		this.modele = modele;
+	}
 	
 	public Marque() {
 		super();

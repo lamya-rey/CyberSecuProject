@@ -11,13 +11,12 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private Long idCl ;
 	private String PrenomCl; 
 	private String nomCl;
 	private int phoneCl;
 	private String mailCl;
-	private String city;
-	
 	
 	
 	public Long getId() {
@@ -58,14 +57,7 @@ public class Client {
 	public void setMailCl(String mailCl) {
 		this.mailCl = mailCl;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	
-	
+
 
 	public Client() {
 		super();

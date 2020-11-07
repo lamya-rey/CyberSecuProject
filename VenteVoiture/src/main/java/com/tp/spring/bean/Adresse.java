@@ -12,7 +12,8 @@ public class Adresse {
 	private Long id;
 	
 	private Long idAdr;
-	private String adrss;
+	private String libelleAdr;
+	
 	
 	public Long getId() {
 		return id;
@@ -27,11 +28,11 @@ public class Adresse {
 	public void setIdAdr(Long idAdr) {
 		this.idAdr = idAdr;
 	}
-	public String getAdrss() {
-		return adrss;
+	public String getLibelleAdr() {
+		return libelleAdr;
 	}
-	public void setAdrss(String adrss) {
-		this.adrss = adrss;
+	public void setLibelleAdr(String libelleAdr) {
+		this.libelleAdr = libelleAdr;
 	}
 	public Adresse() {
 		super();

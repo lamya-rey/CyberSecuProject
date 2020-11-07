@@ -16,7 +16,7 @@ public class Voiture {
 	
 	private Long idVoit ;
 	private BigDecimal prix;
-	private long kilometrage;
+	private Long kilometrage;
 	private String couleur;	
 	
 	@ManyToOne
@@ -24,6 +24,7 @@ public class Voiture {
 	
 	@ManyToOne
 	private Client client;
+	
 	
 	
 	public long getId() {
@@ -46,10 +47,10 @@ public class Voiture {
 	public void setPrix(BigDecimal prix) {
 		this.prix = prix;
 	}
-	public long getKilometrage() {
+	public Long getKilometrage() {
 		return kilometrage;
 	}
-	public void setKilometrage(long kilometrage) {
+	public void setKilometrage(Long kilometrage) {
 		this.kilometrage = kilometrage;
 	}
 	public String getCouleur() {

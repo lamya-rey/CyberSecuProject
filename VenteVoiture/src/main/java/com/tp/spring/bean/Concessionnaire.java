@@ -1,9 +1,12 @@
 package com.tp.spring.bean;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Concessionnaire {
@@ -12,9 +15,11 @@ public class Concessionnaire {
 	private Long id;
 	
 	private Long idCons ;
-	private String prenomCons; 
-	private String nomCons;
+	private String libelleCons; 
 	private int phoneCons;
+	
+	@OneToMany(mappedBy = "concessionnaire")
+	private List<Adresse> adresses;
 	
 	
 	public Long getId() {
@@ -29,23 +34,25 @@ public class Concessionnaire {
 	public void setIdCons(Long idCons) {
 		this.idCons = idCons;
 	}
-	public String getPrenomCons() {
-		return prenomCons;
+	public String getLibelleCons() {
+		return libelleCons;
 	}
-	public void setPrenomCons(String prenomCons) {
-		this.prenomCons = prenomCons;
+	public void setLibelleCons(String libelleCons) {
+		this.libelleCons = libelleCons;
 	}
-	public String getNomCons() {
-		return nomCons;
-	}
-	public void setNomCons(String nomCons) {
-		this.nomCons = nomCons;
-	}
+
 	public int getPhoneCons() {
 		return phoneCons;
 	}
 	public void setPhoneCons(int phoneCons) {
 		this.phoneCons = phoneCons;
+	}
+	
+	public List<Adresse> getAdresses() {
+		return adresses;
+	}
+	public void setAdresses(List<Adresse> adresses) {
+		this.adresses = adresses;
 	}
 	public Concessionnaire() {
 		super();
