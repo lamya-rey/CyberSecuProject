@@ -37,8 +37,8 @@ public class AdresseRest {
 
 
 	@PostMapping("/")
-	public int save(@RequestBody Adresse marque) {
-		return adresseService.save(marque);
+	public int save(@RequestBody Adresse adresse) {
+		return adresseService.save(adresse);
 	}
 
 	@PutMapping("/idAdr/{idAdr}")
