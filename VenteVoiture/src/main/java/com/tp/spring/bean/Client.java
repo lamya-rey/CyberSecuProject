@@ -20,9 +20,9 @@ public class Client {
 	private String nomCl;
 	private String phoneCl;
 	private String mailCl;
-	
+	/*
 	@OneToMany(mappedBy = "client")
-	private List<Voiture> voitures;
+	private List<Voiture> voitures;*/
 	
 	
 	public Long getId() {
@@ -63,13 +63,13 @@ public class Client {
 	public void setMailCl(String mailCl) {
 		this.mailCl = mailCl;
 	}
-
+/*
 	public List<Voiture> getVoitures() {
 		return voitures;
 	}
 	public void setVoitures(List<Voiture> voitures) {
 		this.voitures = voitures;
-	}
+	}*/
 	public Client() {
 		super();
 	}

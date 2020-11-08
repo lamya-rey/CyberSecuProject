@@ -6,13 +6,15 @@ import com.tp.spring.bean.Concessionnaire;
 
 public interface ConcessionnaireService {
 	
-public Concessionnaire findByIdCons(Long idCons);
+	public Concessionnaire findByIdCons(Long idCons);
 	
-	public int deletByIdCons(Long idCons);
+    public Concessionnaire findByLibelleCons(String libelleCons);
+	
+	public int deleteByLibelleCons(String libelleCons);
 	
 	public int save(Concessionnaire concessionnaire);
 	
-	public int update(Concessionnaire concessionnaire);
+	public int update(Long idCons);
 	
 	public List<Concessionnaire> findAll();
 

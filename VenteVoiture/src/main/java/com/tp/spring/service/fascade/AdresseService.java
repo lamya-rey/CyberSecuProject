@@ -8,11 +8,11 @@ public interface AdresseService {
 	
 public Adresse findByIdAdr(Long idAdr);
 	
-	public int deletByIdAdr(Long idAdr);
+	public int deleteByIdAdr(Long idAdr);
 	
 	public int save(Adresse adresse);
 	
-	public int update(Adresse adresse);
+	public int update(Long idAdr);
 	
 	public List<Adresse> findAll();
 

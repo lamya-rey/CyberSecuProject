@@ -28,15 +28,20 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 	public Concessionnaire findByIdCons(Long idCons) {
 		return concessionnaireDao.findByIdCons(idCons);
 	}
-
+	
 	@Override
-	public int deletByIdCons(Long idCons) {
-		return concessionnaireDao.deleteByIdCons(idCons);
+	public Concessionnaire findByLibelleCons(String libelleCons) {
+		return concessionnaireDao.findByLibelleCons(libelleCons);
 	}
 
 	@Override
+	public int deleteByLibelleCons(String libelleCons) {
+		return concessionnaireDao.deleteByLibelleCons(libelleCons);
+	}
+   
+	@Override
 	public int save(Concessionnaire concessionnaire) {
-		Concessionnaire foundedConcessionnaire = findByIdCons(concessionnaire.getIdCons());
+		Concessionnaire foundedConcessionnaire = findByLibelleCons(concessionnaire.getLibelleCons());
 		if (foundedConcessionnaire != null) {
 			return -1;
 		} else {
@@ -46,25 +51,35 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 	}
 
 	@Override
-	public int update(Concessionnaire concessionnaire) {
-		Concessionnaire foundedConcessionnaire = findByIdCons(concessionnaire.getIdCons());
+	public int update(Long idCons) {
+		Concessionnaire foundedConcessionnaire = findByIdCons(idCons);
 		if (foundedConcessionnaire == null) {
 			return -1;
-		} else {
-			for (Adresse adresse : concessionnaire.getAdresses()) {
-				adresseService.update(adresse);
+		} else if ( foundedConcessionnaire.getLibelleCons() == "" || foundedConcessionnaire.getLibelleCons()== null
+	            ||  foundedConcessionnaire.getPhoneCons()== 0
+              	||  foundedConcessionnaire.getAdresses()== null) {
+			return -2;
 			}
+		/*else {
+			for (Adresse adresse : foundedConcessionnaire.getAdresses()) {
+				adresseService.update(adresse);
+			}/*
 			for (Marque marque : concessionnaire.getMarques()) {
 				marqueService.update(marque);
-			}
-			concessionnaireDao.save(foundedConcessionnaire);
+			}*/
+		else {	concessionnaireDao.save(foundedConcessionnaire);
 			return 1;
+			}
 		}
-	}
+
 
 	@Override
 	public List<Concessionnaire> findAll() {
 		return concessionnaireDao.findAll();
 	}
+
+	
+
+	
 
 }

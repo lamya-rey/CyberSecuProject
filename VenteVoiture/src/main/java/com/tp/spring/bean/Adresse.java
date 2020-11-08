@@ -12,7 +12,10 @@ public class Adresse {
 	private Long id;
 	
 	private Long idAdr;
+	private int numero;
 	private String libelleAdr;
+	private String ville;
+	private String pays;
 	
 	
 	public Long getId() {
@@ -28,11 +31,32 @@ public class Adresse {
 	public void setIdAdr(Long idAdr) {
 		this.idAdr = idAdr;
 	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 	public String getLibelleAdr() {
 		return libelleAdr;
 	}
 	public void setLibelleAdr(String libelleAdr) {
 		this.libelleAdr = libelleAdr;
+	}
+	
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+	
+	public String getPays() {
+		return pays;
+	}
+	public void setPays(String pays) {
+		this.pays = pays;
 	}
 	public Adresse() {
 		super();

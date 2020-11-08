@@ -17,7 +17,6 @@ public class Marque {
 	
 	private Long idMarq;
 	private String libelleMarq;
-	private String modele;
 	
 	@ManyToMany
 	private List<Concessionnaire> concessionnaires;
@@ -45,12 +44,6 @@ public class Marque {
 		this.libelleMarq = libelleMarq;
 	}
 	
-	public String getModele() {
-		return modele;
-	}
-	public void setModele(String modele) {
-		this.modele = modele;
-	}
 	public List<Concessionnaire> getConcessionnaires() {
 		return concessionnaires;
 	}

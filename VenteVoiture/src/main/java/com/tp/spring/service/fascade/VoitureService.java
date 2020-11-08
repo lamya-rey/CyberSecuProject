@@ -8,13 +8,13 @@ public interface VoitureService {
 
 public Voiture findByIdVoit(Long idVoit);
 	
-	public int deletByIdVoit(Long idVoit);
+	public int deleteByIdVoit(Long idVoit);
 	
 	public List<Voiture> findByMarqueLibelleMarq(String libelleMarq);
 	
 	public int save(Voiture voiture);
 	
-	public Voiture update(Voiture voiture);
+	public int update(Long idVoit);
 	
 	
 	public List<Voiture> findAll();

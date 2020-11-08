@@ -7,12 +7,14 @@ import com.tp.spring.bean.Marque;
 public interface MarqueService {
 
 public Marque findByIdMarq(Long idMarq);
+
+    public Marque findByLibelleMarq(String libelleMarq);
 	
 	public int  deleteByIdMarq(Long idMarq);
 	
 	public int save(Marque marque);
 	
-	public Marque update(Marque marque);
+	public int update(Long idMarq);
 	
 	public List<Marque> findAll();
 

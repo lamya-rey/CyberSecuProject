@@ -6,10 +6,12 @@ import org.springframework.stereotype.Repository;
 import com.tp.spring.bean.Concessionnaire;
 
 @Repository
-public interface ConcessionnaireDao extends JpaRepository<Concessionnaire, Long>{
+public interface ConcessionnaireDao extends JpaRepository<Concessionnaire, String>{
 	
-public Concessionnaire findByIdCons(Long idCons);
+	public Concessionnaire findByIdCons(Long idCons);
 	
-	public int deleteByIdCons(Long idCons);
+public Concessionnaire findByLibelleCons(String libelleCons);
+	
+	public int deleteByLibelleCons(String libelleCons);
 
 }

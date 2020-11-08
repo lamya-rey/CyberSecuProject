@@ -20,7 +20,7 @@ public class AdresseServiceImpl implements AdresseService {
 	}
 
 	@Override
-	public int deletByIdAdr(Long idAdr) {
+	public int deleteByIdAdr(Long idAdr) {
 		return adresseDao.deleteByIdAdr(idAdr);
 	}
 
@@ -36,16 +36,21 @@ public class AdresseServiceImpl implements AdresseService {
 	}
 
 	@Override
-	public int update(Adresse adresse) {
-		Adresse foundedAdresse = findByIdAdr(adresse.getIdAdr());
+	public int update(Long idAdr) {
+		Adresse foundedAdresse = findByIdAdr(idAdr);
 		if(foundedAdresse==null) {
 			return -1;
-	}else {
-		foundedAdresse.setLibelleAdr(adresse.getLibelleAdr());
+	}
+		else if ( foundedAdresse.getLibelleAdr() == "" || foundedAdresse.getLibelleAdr()== null
+	            || foundedAdresse.getVille() == "" || foundedAdresse.getVille()== null 
+              	|| foundedAdresse.getPays() == "" || foundedAdresse.getPays()== null) {
+			return -2;
+			}
+	else {
 		adresseDao.save(foundedAdresse);
 		return 1;
-	}	
-	}
+			}
+		}
 
 	@Override
 	public List<Adresse> findAll() {

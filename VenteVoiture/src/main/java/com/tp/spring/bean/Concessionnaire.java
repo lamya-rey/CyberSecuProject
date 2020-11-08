@@ -21,9 +21,10 @@ public class Concessionnaire {
 	
 	@OneToMany(mappedBy = "concessionnaire")
 	private List<Adresse> adresses;
-	
+	/*
 	@ManyToMany
-	private List<Marque> marques;
+	private List<Marque> marques; 
+	*/
 	
 	
 	public Long getId() {
@@ -58,13 +59,13 @@ public class Concessionnaire {
 	public void setAdresses(List<Adresse> adresses) {
 		this.adresses = adresses;
 	}
-	
+	/*
 	public List<Marque> getMarques() {
 		return marques;
 	}
 	public void setMarques(List<Marque> marques) {
 		this.marques = marques;
-	}
+	} */
 	public Concessionnaire() {
 		super();
 		// TODO Auto-generated constructor stub

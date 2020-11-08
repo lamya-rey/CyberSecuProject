@@ -1,6 +1,5 @@
 package com.tp.spring.bean;
 
-import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +14,8 @@ public class Voiture {
 	private Long id;
 	
 	private Long idVoit ;
-	private BigDecimal prix;
-	private Long kilometrage;
+	private Double prix;
+	private Double kilometrage;
 	private String couleur;	
 	
 	@ManyToOne
@@ -41,16 +40,16 @@ public class Voiture {
 		this.idVoit = idVoit;
 	}
 	
-	public BigDecimal getPrix() {
+	public Double getPrix() {
 		return prix;
 	}
-	public void setPrix(BigDecimal prix) {
+	public void setPrix(Double prix) {
 		this.prix = prix;
 	}
-	public Long getKilometrage() {
+	public Double getKilometrage() {
 		return kilometrage;
 	}
-	public void setKilometrage(Long kilometrage) {
+	public void setKilometrage(Double kilometrage) {
 		this.kilometrage = kilometrage;
 	}
 	public String getCouleur() {
@@ -68,11 +67,11 @@ public class Voiture {
 	}
 	
 	
-	public Client getAnnonceur() {
+	public Client getClient() {
 		return client;
 	}
-	public void setAnnonceur(Client annonceur) {
-		this.client = annonceur;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 	

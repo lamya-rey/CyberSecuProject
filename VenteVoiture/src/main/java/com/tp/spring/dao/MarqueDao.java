@@ -12,6 +12,8 @@ public interface MarqueDao extends JpaRepository<Marque, Long> {
 	
 	public Marque findByIdMarq(Long idMarq);
 	
+	public Marque findByLibelleMarq(String libelleMarq);
+	
 	public int  deleteByIdMarq(Long idMarq);
 	
 	
