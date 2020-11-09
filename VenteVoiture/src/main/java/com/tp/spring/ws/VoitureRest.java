@@ -22,38 +22,43 @@ import com.tp.spring.service.fascade.VoitureService;
 public class VoitureRest {
 	
 	@Autowired
-	public VoitureService VoitureService;
+	public VoitureService voitureService;
 	
 	@GetMapping("/idVoit/{idVoit}")
 	public Voiture findByIdVoit(@PathVariable Long idVoit) {
-		return VoitureService.findByIdVoit(idVoit);
+		return voitureService.findByIdVoit(idVoit);
 	}
 	
 	@GetMapping("/Client/idCl/{idCl}")
 	public Voiture findByClientIdCl(@PathVariable Long idCl) {
-		return VoitureService.findByClientIdCl(idCl);
+		return voitureService.findByClientIdCl(idCl);
+	}
+	
+	@GetMapping("/Marque/libelleMarq/{libelleMarq}")
+	public List<Voiture> findByMarqueLibelleMarq(String libelleMarq) {
+		return voitureService.findByMarqueLibelleMarq(libelleMarq);
 	}
 	
 
 	@DeleteMapping("/idVoit/{idVoit}")
 	public int deleteByIdVoit(@PathVariable Long idVoit) {
-		return VoitureService.deleteByIdVoit(idVoit);
+		return voitureService.deleteByIdVoit(idVoit);
 	}
 
 
 	@PostMapping("/")
 	public int save(@RequestBody Voiture client) {
-		return VoitureService.save(client);
+		return voitureService.save(client);
 	}
 
 	@PutMapping("/")
 	public int update(@RequestBody Voiture voiture) {
-		return VoitureService.update(voiture);
+		return voitureService.update(voiture);
 	}
 
 	@GetMapping("/")
 	public List<Voiture> findAll() {
-		return VoitureService.findAll();
+		return voitureService.findAll();
 	}
 
 }
