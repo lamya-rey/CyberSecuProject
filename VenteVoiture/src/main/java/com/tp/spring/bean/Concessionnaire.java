@@ -16,7 +16,8 @@ public class Concessionnaire {
 	private String libelleCons; 
 	private String phoneCons;
 	
-	// i removed mapped by because i didn't put the relation in adress entity it gives an error
+	// i removed mapped by because i didn't put the relation in adresse and marque entity it gives an error
+	
 	@OneToMany
 	private List<Adresse> adresses;
 	
