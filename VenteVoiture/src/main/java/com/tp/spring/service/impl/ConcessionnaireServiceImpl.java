@@ -101,7 +101,7 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 			for (Marque marque : concessionnaire.getMarques()) {
 				marqueService.update(marque);
 			}
-			concessionnaire.setId(foundedConcessionnaire.getId());
+			concessionnaire.setIdCons(foundedConcessionnaire.getIdCons());
 			concessionnaireDao.save(concessionnaire);
 			return 1;
 		}

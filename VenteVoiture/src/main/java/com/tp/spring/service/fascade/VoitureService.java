@@ -7,6 +7,8 @@ import com.tp.spring.bean.Voiture;
 public interface VoitureService {
 
 	public Voiture findByIdVoit(Long idVoit);
+	
+	public Voiture findByClientIdCl(Long idCl);
 
 	public int deleteByIdVoit(Long idVoit);
 

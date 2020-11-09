@@ -29,6 +29,11 @@ public class VoitureRest {
 		return VoitureService.findByIdVoit(idVoit);
 	}
 	
+	@GetMapping("/Client/idCl/{idCl}")
+	public Voiture findByClientIdCl(@PathVariable Long idCl) {
+		return VoitureService.findByClientIdCl(idCl);
+	}
+	
 
 	@DeleteMapping("/idVoit/{idVoit}")
 	public int deleteByIdVoit(@PathVariable Long idVoit) {

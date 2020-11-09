@@ -28,6 +28,10 @@ public class VoitureServiceImpl implements VoitureService {
 		return voitureDao.findByIdVoit(idVoit);
 	}
 
+	@Override
+	public Voiture findByClientIdCl(Long idCl) {
+		return voitureDao.findByClientIdCl(idCl);
+	}
 	
 	@Override
 	public int deleteByIdVoit(Long idVoit) {
@@ -71,13 +75,13 @@ public class VoitureServiceImpl implements VoitureService {
 			return -1;
 		} else if (voiture.getPrix() == 0.0 || voiture.getKilometrage() == 0.0
 				|| voiture.getCouleur() == "" || voiture.getCouleur() == null
-				|| voiture.getMarque().getLibelleMarq() == ""
-				|| voiture.getMarque().getLibelleMarq() == null || voiture.getClient().getIdCl() == 0) {
+				|| voiture.getMarque().getIdMarq() == 0
+				 || voiture.getClient().getIdCl() == 0) {
 			return -2;
 		} else {
 			voiture.setClient(clientService.findByIdCl(voiture.getClient().getIdCl()));
 			voiture.setMarque(marqueService.findByIdMarq(voiture.getMarque().getIdMarq()));
-			voiture.setId(foundedVoiture.getId());
+			voiture.setIdVoit(foundedVoiture.getIdVoit());
 			voitureDao.save(voiture);
 			return 1;
 		}
@@ -87,5 +91,6 @@ public class VoitureServiceImpl implements VoitureService {
 	public List<Voiture> findAll() {
 		return voitureDao.findAll();
 	}
+
 
 }

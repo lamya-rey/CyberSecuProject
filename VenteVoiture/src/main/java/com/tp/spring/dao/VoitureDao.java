@@ -11,6 +11,8 @@ public interface VoitureDao extends JpaRepository<Voiture, Long> {
 	
 	public Voiture findByIdVoit(Long idVoit);
 	
+	public Voiture findByClientIdCl(Long idCl);
+	
 	public int deleteByIdVoit(Long idVoit);
 	
 	public List<Voiture> findByMarqueLibelleMarq(String libelleMarq);

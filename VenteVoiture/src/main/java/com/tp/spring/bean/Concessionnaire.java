@@ -12,9 +12,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Concessionnaire {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
 	private Long idCons ;
 	private String libelleCons; 
 	private String phoneCons;
@@ -26,12 +23,6 @@ public class Concessionnaire {
 	@ManyToMany
 	private List<Marque> marques; 
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public Long getIdCons() {
 		return idCons;
 	}
@@ -68,6 +59,20 @@ public class Concessionnaire {
 	public Concessionnaire() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Concessionnaire(Long idCons, String libelleCons, String phoneCons, List<Adresse> adresses,
+			List<Marque> marques) {
+		super();
+		this.idCons = idCons;
+		this.libelleCons = libelleCons;
+		this.phoneCons = phoneCons;
+		this.adresses = adresses;
+		this.marques = marques;
+	}
+	@Override
+	public String toString() {
+		return "Concessionnaire [idCons=" + idCons + ", libelleCons=" + libelleCons + ", phoneCons=" + phoneCons
+				+ ", adresses=" + adresses + ", marques=" + marques + "]";
 	}
 	
 	

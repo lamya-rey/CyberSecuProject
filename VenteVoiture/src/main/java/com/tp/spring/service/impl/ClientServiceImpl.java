@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tp.spring.bean.Client;
-import com.tp.spring.bean.Voiture;
 import com.tp.spring.dao.ClientDao;
 import com.tp.spring.service.fascade.ClientService;
 import com.tp.spring.service.fascade.VoitureService;
@@ -36,9 +35,6 @@ public class ClientServiceImpl implements ClientService {
 			return -1;
 		}
 		else {
-			for(Voiture v:foundedClient.getVoitures()) {
-				voitureService.deleteByIdVoit(v.getIdVoit());
-			}
 			clientDao.delete(foundedClient);
 			return 1;
 		}
@@ -76,7 +72,7 @@ public class ClientServiceImpl implements ClientService {
 			return -2;
 			}
 			else {
-				client.setId(foundedClient.getId());
+				client.setIdCl(foundedClient.getIdCl());
 				clientDao.save(client);
 				return 1;
 			}	

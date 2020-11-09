@@ -15,25 +15,12 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 public class Client {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
 	private Long idCl;
 	private String PrenomCl;
 	private String nomCl;
 	private String phoneCl;
 	private String mailCl;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "client")
-	private List<Voiture> voitures;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public Long getIdCl() {
 		return idCl;
@@ -75,16 +62,25 @@ public class Client {
 		this.mailCl = mailCl;
 	}
 
-	public List<Voiture> getVoitures() {
-		return voitures;
-	}
-
-	public void setVoitures(List<Voiture> voitures) {
-		this.voitures = voitures;
-	}
 
 	public Client() {
 		super();
 	}
+
+	public Client(Long idCl, String prenomCl, String nomCl, String phoneCl, String mailCl) {
+		super();
+		this.idCl = idCl;
+		PrenomCl = prenomCl;
+		this.nomCl = nomCl;
+		this.phoneCl = phoneCl;
+		this.mailCl = mailCl;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [idCl=" + idCl + ", PrenomCl=" + PrenomCl + ", nomCl=" + nomCl + ", phoneCl=" + phoneCl
+				+ ", mailCl=" + mailCl + "]";
+	}
+	
 
 }

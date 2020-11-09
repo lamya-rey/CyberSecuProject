@@ -2,6 +2,7 @@ package com.tp.spring.service.impl;
 
 import java.util.List;
 
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +67,7 @@ public class MarqueServiceImpl implements MarqueService {
 		} else if (marque.getLibelleMarq() == "" || marque.getLibelleMarq() == null) {
 			return -2;
 		} else {
-			marque.setId(foundedMarque.getId());
+			marque.setIdMarq(foundedMarque.getIdMarq());
 			marqueDao.save(foundedMarque);
 			return 1;
 		}
