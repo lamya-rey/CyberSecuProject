@@ -41,9 +41,9 @@ public class VoitureRest {
 		return VoitureService.save(client);
 	}
 
-	@PutMapping("/idVoit/{idVoit}")
-	public int update(@PathVariable Long idVoit) {
-		return VoitureService.update(idVoit);
+	@PutMapping("/")
+	public int update(@RequestBody Voiture voiture) {
+		return VoitureService.update(voiture);
 	}
 
 	@GetMapping("/")

@@ -23,33 +23,30 @@ import com.tp.spring.service.fascade.MarqueService;
 public class MarqueRest {
 	@Autowired
 	public MarqueService marqueService;
-	
+
 	@GetMapping("/idMarq/{idMarq}")
 	public Marque findByIdMarq(@PathVariable Long idMarq) {
 		return marqueService.findByIdMarq(idMarq);
 	}
-	
+
 	@GetMapping("/libelleMarq/{libelleMarq}")
 	public Marque findByLibelleMarq(@PathVariable String libelleMarq) {
 		return marqueService.findByLibelleMarq(libelleMarq);
 	}
-	
-	
 
 	@DeleteMapping("/idMarq/{idMarq}")
 	public int deleteByIdMarq(@PathVariable Long idMarq) {
 		return marqueService.deleteByIdMarq(idMarq);
 	}
 
-
 	@PostMapping("/")
 	public int save(@RequestBody Marque marque) {
 		return marqueService.save(marque);
 	}
 
-	@PutMapping("/idMarq/{idMarq}")
-	public int update(@PathVariable Long idMarq) {
-		return marqueService.update(idMarq);
+	@PutMapping("/")
+	public int update(@RequestBody Marque marque) {
+		return marqueService.update(marque);
 	}
 
 	@GetMapping("/")

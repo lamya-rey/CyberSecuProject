@@ -17,7 +17,7 @@ import com.tp.spring.bean.Concessionnaire;
 import com.tp.spring.service.fascade.ConcessionnaireService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins =  { "http://localhost:4200" })
 @RequestMapping("VenteVoiture/Concessionnaire")
 public class ConcessionnaireRest {
 	
@@ -29,7 +29,8 @@ public class ConcessionnaireRest {
 		return concessionnaireService.findByIdCons(idCons);
 	}
 	
-	@GetMapping("/idCons/{idCons}")
+
+	@GetMapping("/libbeleCons/{libelleCons}")
 	public Concessionnaire findByLibelleCons(@PathVariable String libelleCons) {
 		return concessionnaireService.findByLibelleCons(libelleCons);
 	}
@@ -46,9 +47,9 @@ public class ConcessionnaireRest {
 		return concessionnaireService.save(concessionnaire);
 	}
 
-	@PutMapping("/idCons/{idCons}")
-	public int update(@PathVariable Long idCons) {
-		return concessionnaireService.update(idCons);
+	@PutMapping("/")
+	public int update(@RequestBody Concessionnaire concessionnaire) {
+		return concessionnaireService.update(concessionnaire);
 	}
 
 	@GetMapping("/")
@@ -57,3 +58,4 @@ public class ConcessionnaireRest {
 	}
 
 }
+

@@ -40,9 +40,9 @@ public class ClientRest {
 		return clientService.save(client);
 	}
 
-	@PutMapping("/idCl/{idCl}")
-	public int update(@PathVariable Long idCl) {
-		return clientService.update(idCl);
+	@PutMapping("/")
+	public int update(@RequestBody Client client) {
+		return clientService.update(client);
 	}
 
 	@GetMapping("/")

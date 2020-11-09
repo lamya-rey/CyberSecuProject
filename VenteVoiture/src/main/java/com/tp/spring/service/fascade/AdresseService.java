@@ -12,7 +12,7 @@ public Adresse findByIdAdr(Long idAdr);
 	
 	public int save(Adresse adresse);
 	
-	public int update(Long idAdr);
+	public int update(Adresse adresse);
 	
 	public List<Adresse> findAll();
 

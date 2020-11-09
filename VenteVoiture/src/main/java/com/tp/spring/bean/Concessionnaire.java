@@ -17,15 +17,14 @@ public class Concessionnaire {
 	
 	private Long idCons ;
 	private String libelleCons; 
-	private int phoneCons;
+	private String phoneCons;
 	
-	@OneToMany(mappedBy = "concessionnaire")
+	// i removed mapped by because i didn't put the relation in adress entity it gives an error
+	@OneToMany
 	private List<Adresse> adresses;
-	/*
+	
 	@ManyToMany
 	private List<Marque> marques; 
-	*/
-	
 	
 	public Long getId() {
 		return id;
@@ -46,10 +45,10 @@ public class Concessionnaire {
 		this.libelleCons = libelleCons;
 	}
 
-	public int getPhoneCons() {
+	public String getPhoneCons() {
 		return phoneCons;
 	}
-	public void setPhoneCons(int phoneCons) {
+	public void setPhoneCons(String phoneCons) {
 		this.phoneCons = phoneCons;
 	}
 	
@@ -59,17 +58,18 @@ public class Concessionnaire {
 	public void setAdresses(List<Adresse> adresses) {
 		this.adresses = adresses;
 	}
-	/*
+	
 	public List<Marque> getMarques() {
 		return marques;
 	}
 	public void setMarques(List<Marque> marques) {
 		this.marques = marques;
-	} */
+	} 
 	public Concessionnaire() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 }

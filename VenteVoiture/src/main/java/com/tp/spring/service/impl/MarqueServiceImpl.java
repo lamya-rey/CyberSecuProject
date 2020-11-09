@@ -2,18 +2,23 @@ package com.tp.spring.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.transaction.Transactional;
 
-import com.tp.spring.bean.Adresse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.tp.spring.bean.Marque;
-import com.tp.spring.bean.Marque;
+import com.tp.spring.bean.Voiture;
 import com.tp.spring.dao.MarqueDao;
 import com.tp.spring.service.fascade.MarqueService;
+import com.tp.spring.service.fascade.VoitureService;
+@Service
+public class MarqueServiceImpl implements MarqueService {
 
-public class MarqueServiceImpl implements MarqueService{
-	
 	@Autowired
-	public MarqueDao marqueDao;
+	private MarqueDao marqueDao;
+	@Autowired
+	private VoitureService voitureService;
 
 	@Override
 	public Marque findByIdMarq(Long idMarq) {
@@ -24,10 +29,20 @@ public class MarqueServiceImpl implements MarqueService{
 	public Marque findByLibelleMarq(String libelleMarq) {
 		return marqueDao.findByLibelleMarq(libelleMarq);
 	}
-
+	@Transactional
 	@Override
 	public int deleteByIdMarq(Long idMarq) {
-		return marqueDao.deleteByIdMarq(idMarq);
+		Marque foundedMarque = findByIdMarq(idMarq);
+		if(foundedMarque == null) {
+			return -1;
+		}else {
+			List<Voiture> voitures = voitureService.findByMarqueLibelleMarq(foundedMarque.getLibelleMarq());
+			for(Voiture v : voitures) {
+				voitureService.deleteByIdVoit(v.getIdVoit());
+			}
+			marqueDao.delete(foundedMarque);
+			return 1;
+		}
 	}
 
 	@Override
@@ -35,6 +50,8 @@ public class MarqueServiceImpl implements MarqueService{
 		Marque foundedMarque = findByLibelleMarq(marque.getLibelleMarq());
 		if (foundedMarque != null) {
 			return -1;
+		} else if (marque.getLibelleMarq() == "" || marque.getLibelleMarq() == null) {
+			return -2;
 		} else {
 			marqueDao.save(marque);
 			return 1;
@@ -42,20 +59,18 @@ public class MarqueServiceImpl implements MarqueService{
 	}
 
 	@Override
-	public int update(Long idMarq) {
-		Marque foundedMarque = findByIdMarq(idMarq);
-		if(foundedMarque==null) {
+	public int update(Marque marque) {
+		Marque foundedMarque = findByIdMarq(marque.getIdMarq());
+		if (foundedMarque == null) {
 			return -1;
-	}
-		else if ( foundedMarque.getLibelleMarq() == "" || foundedMarque.getLibelleMarq()== null) {
-	    
+		} else if (marque.getLibelleMarq() == "" || marque.getLibelleMarq() == null) {
 			return -2;
-			}
-	else {
-		marqueDao.save(foundedMarque);
-		return 1;
-			}
+		} else {
+			marque.setId(foundedMarque.getId());
+			marqueDao.save(foundedMarque);
+			return 1;
 		}
+	}
 
 	@Override
 	public List<Marque> findAll() {

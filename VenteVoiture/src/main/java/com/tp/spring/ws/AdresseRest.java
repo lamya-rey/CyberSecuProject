@@ -20,30 +20,29 @@ import com.tp.spring.service.fascade.AdresseService;
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RequestMapping("VenteVoiture/Adresse")
 public class AdresseRest {
-	
+
 	@Autowired
 	public AdresseService adresseService;
-	
+
 	@GetMapping("/idAdr/{idAdr}")
 	public Adresse findByIdAdr(@PathVariable Long idAdr) {
 		return adresseService.findByIdAdr(idAdr);
 	}
-	
 
 	@DeleteMapping("/idAdr/{idAdr}")
 	public int deleteByIdAdr(@PathVariable Long idAdr) {
 		return adresseService.deleteByIdAdr(idAdr);
 	}
 
-
 	@PostMapping("/")
-	public int save(@RequestBody Adresse adresse) {
-		return adresseService.save(adresse);
+	public int save(@RequestBody Adresse marque) {
+		return adresseService.save(marque);
 	}
 
-	@PutMapping("/idAdr/{idAdr}")
-	public int update(@PathVariable Long idAdr) {
-		return adresseService.update(idAdr);
+	
+	@PutMapping("/")
+	public int update(@RequestBody Adresse adresse) {
+		return adresseService.update(adresse);
 	}
 
 	@GetMapping("/")
@@ -52,3 +51,4 @@ public class AdresseRest {
 	}
 
 }
+

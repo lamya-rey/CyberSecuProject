@@ -21,6 +21,7 @@ public class Voiture {
 	@ManyToOne
 	private Marque marque;
 	
+
 	@ManyToOne
 	private Client client;
 	
@@ -79,5 +80,4 @@ public class Voiture {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 }
