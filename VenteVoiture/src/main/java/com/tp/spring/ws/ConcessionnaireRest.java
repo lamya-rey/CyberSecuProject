@@ -30,13 +30,13 @@ public class ConcessionnaireRest {
 	}
 	
 
-	@GetMapping("/libbeleCons/{libelleCons}")
+	@GetMapping("/libelleCons/{libelleCons}")
 	public Concessionnaire findByLibelleCons(@PathVariable String libelleCons) {
 		return concessionnaireService.findByLibelleCons(libelleCons);
 	}
 	
 
-	@DeleteMapping("/libelleCons/{libelleCons}")
+	@DeleteMapping("/delete/libelleCons/{libelleCons}")
 	public int deleteByLibelleCons(@PathVariable String libelleCons) {
 		return concessionnaireService.deleteByLibelleCons(libelleCons);
 	}

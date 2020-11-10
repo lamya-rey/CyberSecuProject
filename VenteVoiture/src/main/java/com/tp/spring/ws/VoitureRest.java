@@ -35,7 +35,7 @@ public class VoitureRest {
 	}
 	
 	@GetMapping("/Marque/libelleMarq/{libelleMarq}")
-	public List<Voiture> findByMarqueLibelleMarq(String libelleMarq) {
+	public List<Voiture> findByMarqueLibelleMarq(@PathVariable String libelleMarq) {
 		return voitureService.findByMarqueLibelleMarq(libelleMarq);
 	}
 	

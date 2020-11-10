@@ -61,7 +61,7 @@ public class AdresseServiceImpl implements AdresseService {
 				|| adresse.getPays() == "" || adresse.getPays() == null) {
 			return -2;
 		} else {
-			adresse.setId(foundedAdresse.getId());
+			adresse.setIdAdr(foundedAdresse.getIdAdr());
 			adresseDao.save(adresse);
 			return 1;
 		}

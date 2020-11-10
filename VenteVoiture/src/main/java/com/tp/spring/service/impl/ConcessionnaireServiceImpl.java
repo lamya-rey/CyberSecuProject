@@ -55,7 +55,7 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 	@Transactional
 	@Override
 	public int save(Concessionnaire concessionnaire) {
-		Concessionnaire foundedConcessionnaire = findByLibelleCons(concessionnaire.getLibelleCons());
+		Concessionnaire foundedConcessionnaire = findByIdCons(concessionnaire.getIdCons());
 		if (foundedConcessionnaire != null) {
 			return -1;
 		} else if (concessionnaire.getLibelleCons() == "" || concessionnaire.getLibelleCons() == null
@@ -65,9 +65,12 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 		} else {
 			
 			if (concessionnaire.getAdresses().size() > 0) {
+				List<Adresse>  adresses = new ArrayList<Adresse>();
 				for (Adresse ad : concessionnaire.getAdresses()) {
 					adresseService.save(ad);
+					adresses.add(adresseService.findByIdAdr(ad.getIdAdr()));
 				}
+				concessionnaire.setAdresses(adresses);
 			}
 			if(concessionnaire.getMarques().size()>0) {
 				List<Marque> marques = new ArrayList<Marque>();
@@ -75,6 +78,10 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 					Marque foundedM = marqueService.findByIdMarq(m.getIdMarq()); 
 					if(foundedM != null) {
 						marques.add(foundedM);
+					}else {
+						if(marqueService.save(m)>0) {
+							marques.add(marqueService.findByIdMarq(m.getIdMarq()));
+						}
 					}
 				}
 				concessionnaire.setMarques(marques);
