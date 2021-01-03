@@ -90,12 +90,16 @@ ex: http://localhost:8080/client/delete/1
 # Objectif De Sécurité
 
 ##### Confidentialité 
+0/5 -> Les mots de passe sont affichés en clair  et on peut les récupérer facilement en utilisant GET, ainsi que tout les utilisateurs peuvent accéder à n'impote quel information. L'utilisation de Spring Security dans ce cas sera utile pour gérer l'accés aux informations ainsi pour le cryptage des mots de passe. 
 
 ##### Intégrité
+1/5 -> la modification et la suppression des données est plus facile en utilisant les requêtes PUT et DELETE, donc les informations ne sont pas fiable, elles peuvent être modifiées par un utilisateur malveillant.
 
 ##### Disponibilité 
+4/5 -> L'accés et la visibilité des informations est très facile, chaque utilisateur peut trouver les informations d'un ou plusieurs objets selon le besoin ainsi que la relation entre des objets de modèle différent, par exemple en cherchant une voiture on peut trouver sa marque ainsi que les informations de son proprietaire.
 
 ##### Trasabilité 
+0/5 -> Aucune tracabilité sur qui a fait un changement ou modification et en quel moment.
 
 
 
