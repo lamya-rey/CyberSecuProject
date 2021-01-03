@@ -11,25 +11,39 @@ Commande Docker run
 
 ***
 # Tests
-Sur navigateur :
+* Sur navigateur :
 GET modèles
+
 http://localhost:8080/nom_modèle/
+
 ex: http://localhost:8080/client/
 
+
 GET modèles par id
+
 http://localhost:8080/nom_modèle/{id}
+
 ex: http://localhost:8080/client/1
 
+
 GET  Adresse,Concessionnaire,Marque par libelle
+
 http://localhost:8080/nom_modèle/search/{libelle}
+
 ex: http://localhost:8080/marque/search/Dacia
 
+
 GET Client par login
+
 http://localhost:8080/client/search/{login}
+
 ex:http://localhost:8080/client/search/lamyaray
 
+
 GET Voiture par login Client
+
 http://localhost:8080/voiture/client/{login}
+
 ex:http://localhost:8080/voiture/client/lamyaray
 
 Sur Postman :
