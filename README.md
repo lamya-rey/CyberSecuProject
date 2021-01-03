@@ -79,9 +79,12 @@ ex: http://localhost:8080/voiture/update
     "id": 4,
     "prix": 30000.0,
     "kilometrage": 2000.0,
-    "couleur": "Jaune", //changement de couleur
-    "marque": {"id": 1 }, //changement d'id
-    "client": {"id": 1} //changement d'id
+    "couleur": "Jaune",
+   ###### changement de couleur
+    "marque": {"id": 1 },
+   ###### changement d'id
+    "client": {"id": 1} 
+   ###### changement d'id
 }
 
 
@@ -92,7 +95,21 @@ http://localhost:8080/nom_modèle/{id}
 ex: http://localhost:8080/client/delete/1
 ***
 # Surface D'attaque
-![Image text](/Concessionnaire_mermaidjs.png)
+
+***
+# Objectif De Sécurité
+
+##### Confidentialité 
+
+##### Intégrité
+
+##### Disponibilité 
+
+##### Trasabilité 
+
+
+
+
 
 
 
