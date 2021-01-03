@@ -13,7 +13,7 @@ Commande Docker run
 # Tests
 * Sur navigateur :
 
-[GET Modèle](#get-modèle)GET modèles
+[GET modèles]
 
 http://localhost:8080/nom_modèle/
 
