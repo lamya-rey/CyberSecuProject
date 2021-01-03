@@ -13,7 +13,7 @@ Commande Docker run
 # Tests
 * Sur navigateur :
 
-GET modèles
+[GET Modèle](#get-modèle)GET modèles
 
 http://localhost:8080/nom_modèle/
 
@@ -53,7 +53,7 @@ Vous trouverez un fichier de collection postman dans le dossier test
 
 Toute méthode de GET comme celle sur navigateur
 
-''' POST modèle '''
+POST modèle
 
 http://localhost:8080/nom_modèle/save
 
