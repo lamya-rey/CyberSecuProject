@@ -101,7 +101,7 @@ ex: http://localhost:8080/client/delete/1
 ##### Trasabilité 
 0/5 -> Aucune tracabilité sur qui a fait un changement ou modification et en quel moment.
 ***
-### AUTHOR
+### AUTEUR
 #### Lamya Rayess lamya.rayess@lacatholille.com 
 
 
