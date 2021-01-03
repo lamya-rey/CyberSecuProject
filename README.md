@@ -13,36 +13,31 @@ Commande Docker run
 # Tests
 * Sur navigateur :
 
-GET modèles
-
+###### GET modèles
 http://localhost:8080/nom_modèle/
 
 ex: http://localhost:8080/client/
 
 
-GET modèles par id
-
+###### GET modèles par id
 http://localhost:8080/nom_modèle/{id}
 
 ex: http://localhost:8080/client/1
 
 
-GET  Adresse,Concessionnaire,Marque par libelle
-
+###### GET  Adresse,Concessionnaire,Marque par libelle
 http://localhost:8080/nom_modèle/search/{libelle}
 
 ex: http://localhost:8080/marque/search/Dacia
 
 
-GET Client par login
-
+###### GET Client par login
 http://localhost:8080/client/search/{login}
 
 ex:http://localhost:8080/client/search/lamyaray
 
 
-GET Voiture par login Client
-
+###### GET Voiture par login Client
 http://localhost:8080/voiture/client/{login}
 
 ex:http://localhost:8080/voiture/client/lamyaray
@@ -51,10 +46,9 @@ ex:http://localhost:8080/voiture/client/lamyaray
 
 Vous trouverez un fichier de collection postman dans le dossier test
 
-Toute méthode de GET comme celle sur navigateur
+###### Toute méthode de GET comme celle sur navigateur
 
-POST modèle
-
+###### POST modèle
 http://localhost:8080/nom_modèle/save
 
 ex: http://localhost:8080/voiture/save
@@ -69,8 +63,7 @@ ex: http://localhost:8080/voiture/save
 }
 
 
-PUTT modèle
-
+###### PUTT modèle
 http://localhost:8080/nom_modèle/update
 
 ex: http://localhost:8080/voiture/update
@@ -80,16 +73,13 @@ ex: http://localhost:8080/voiture/update
     "prix": 30000.0,
     "kilometrage": 2000.0,
     "couleur": "Jaune",
-   ###### changement de couleur
     "marque": {"id": 1 },
-   ###### changement d'id
     "client": {"id": 1} 
-   ###### changement d'id
+   
 }
 
 
-DELETE modèles par id
-
+###### DELETE modèles par id
 http://localhost:8080/nom_modèle/{id}
 
 ex: http://localhost:8080/client/delete/1
