@@ -12,6 +12,7 @@ Commande Docker run
 ***
 # Tests
 * Sur navigateur :
+
 GET modèles
 
 http://localhost:8080/nom_modèle/
@@ -52,8 +53,11 @@ Vous trouverez un fichier de collection postman dans le dossier test
 Toute méthode de GET comme celle sur navigateur
 
 POST modèle
+
 http://localhost:8080/nom_modèle/save
+
 ex: http://localhost:8080/voiture/save
+
  mettre l'objet à ajouter sur body postman en selectionnant JSON : {
     "id": 4,
     "prix": 30000.0,
@@ -63,9 +67,13 @@ ex: http://localhost:8080/voiture/save
     "client": {"id": 2}
 }
 
+
 PUTT modèle
+
 http://localhost:8080/nom_modèle/update
+
 ex: http://localhost:8080/voiture/update
+
  mettre l'objet à modifier sur body postman en selectionnant JSON : {
     "id": 4,
     "prix": 30000.0,
@@ -75,8 +83,11 @@ ex: http://localhost:8080/voiture/update
     "client": {"id": 1} //changement d'id
 }
 
+
 DELETE modèles par id
+
 http://localhost:8080/nom_modèle/{id}
+
 ex: http://localhost:8080/client/delete/1
 
 
