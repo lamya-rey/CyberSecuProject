@@ -11,7 +11,7 @@ Commande Docker run
 
 ***
 # Tests
-* Sur navigateur :
+##### Sur navigateur :
 
 ###### GET modèles
 http://localhost:8080/nom_modèle/
@@ -42,7 +42,7 @@ http://localhost:8080/voiture/client/{login}
 
 ex:http://localhost:8080/voiture/client/lamyaray
 
-* Sur Postman :
+##### Sur Postman :
 
 Vous trouverez un fichier de collection postman dans le dossier test
 
