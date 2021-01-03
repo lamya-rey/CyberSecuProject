@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tp.spring.bean.Client;
 import com.tp.spring.dao.ClientDao;
+import com.tp.spring.entity.Client;
 import com.tp.spring.service.fascade.ClientService;
 import com.tp.spring.service.fascade.VoitureService;
 
@@ -23,14 +23,14 @@ public class ClientServiceImpl implements ClientService {
 	public VoitureService voitureService;
 	
 	@Override
-	public Client findByIdCl(Long idCl) {
-		return clientDao.findByIdCl(idCl);
+	public Client findById(Long id) {
+		return clientDao.findById(id).orElse(null);
 	}
 	
 	@Transactional
 	@Override
-	public int deleteByIdCl(Long idCl) {
-		Client foundedClient = findByIdCl(idCl);
+	public int deleteById(Long id) {
+		Client foundedClient = findById(id);
 		if(foundedClient == null) {
 			return -1;
 		}
@@ -42,16 +42,11 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public int save(Client client) {
-		Client foundedClient = findByIdCl(client.getIdCl());
+		Client foundedClient = findById(client.getId());
 		
 		if(foundedClient!=null) {
 			return -1;
-		}else if(client.getPhoneCl() == "" || client.getPhoneCl() == null
-			       ||client.getPrenomCl() == "" || client.getPrenomCl()== null
-			    	|| client.getNomCl() == "" || client.getNomCl()== null 
-				   || client.getMailCl() == "" || client.getMailCl()== null) {
-				return -2;
-				}
+		}
 		else {
 		
 			clientDao.save(client);
@@ -61,18 +56,12 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public int update(Client client) {
-		Client foundedClient=findByIdCl(client.getIdCl());
+		Client foundedClient=findById(client.getId());
 		if(foundedClient==null) {
 			return -1;
 		}
-		else if(client.getPhoneCl() == "" || client.getPhoneCl() == null
-		       ||client.getPrenomCl() == "" || client.getPrenomCl()== null
-		    	|| client.getNomCl() == "" || client.getNomCl()== null 
-			   || client.getMailCl() == "" || client.getMailCl()== null) {
-			return -2;
-			}
 			else {
-				client.setIdCl(foundedClient.getIdCl());
+				client.setId(foundedClient.getId());
 				clientDao.save(client);
 				return 1;
 			}	
@@ -83,6 +72,11 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public List<Client> findAll() {
 		return clientDao.findAll();
+	}
+
+	@Override
+	public Client findByLogin(String login) {
+		return clientDao.findByLogin(login);
 	}
 
 

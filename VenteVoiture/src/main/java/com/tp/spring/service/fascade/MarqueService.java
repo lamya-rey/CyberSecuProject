@@ -2,15 +2,15 @@ package com.tp.spring.service.fascade;
 
 import java.util.List;
 
-import com.tp.spring.bean.Marque;
+import com.tp.spring.entity.Marque;
 
 public interface MarqueService {
 
-	public Marque findByIdMarq(Long idMarq);
+	public Marque findById(Long id);
 
-    public Marque findByLibelleMarq(String libelleMarq);
+    public Marque findByLibelle(String libelle);
 	
-	public int  deleteByIdMarq(Long idMarq);
+	public int  deleteById(Long id);
 	
 	public int save(Marque marque);
 	

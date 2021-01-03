@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tp.spring.bean.Client;
-import com.tp.spring.bean.Marque;
-import com.tp.spring.bean.Voiture;
 import com.tp.spring.dao.VoitureDao;
+import com.tp.spring.entity.Client;
+import com.tp.spring.entity.Marque;
+import com.tp.spring.entity.Voiture;
 import com.tp.spring.service.fascade.ClientService;
 import com.tp.spring.service.fascade.MarqueService;
 import com.tp.spring.service.fascade.VoitureService;
@@ -24,18 +24,18 @@ public class VoitureServiceImpl implements VoitureService {
 	public ClientService clientService;
 	
 	@Override
-	public Voiture findByIdVoit(Long idVoit) {
-		return voitureDao.findByIdVoit(idVoit);
+	public Voiture findById(Long id) {
+		return voitureDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public Voiture findByClientIdCl(Long idCl) {
-		return voitureDao.findByClientIdCl(idCl);
+	public Voiture findByClientLogin(String login) {
+		return voitureDao.findByClientLogin(login);
 	}
 	
 	@Override
-	public int deleteByIdVoit(Long idVoit) {
-		Voiture foundedVoiture = findByIdVoit(idVoit);
+	public int deleteById(Long id) {
+		Voiture foundedVoiture = findById(id);
 		if(foundedVoiture == null) {
 			return -1;
 		}else {
@@ -45,20 +45,20 @@ public class VoitureServiceImpl implements VoitureService {
 	}
 
 	@Override
-	public List<Voiture> findByMarqueLibelleMarq(String libelleMarq) {
-		return voitureDao.findByMarqueLibelleMarq(libelleMarq);
+	public List<Voiture> findByMarqueLibelle(String libelle) {
+		return voitureDao.findByMarqueLibelle(libelle);
 	}
 
 	@Override
 	public int save(Voiture voiture) {
-		Voiture foundedVoiture = findByIdVoit(voiture.getIdVoit());
-		Marque marque = marqueService.findByIdMarq(voiture.getMarque().getIdMarq());
-		Client client = clientService.findByIdCl(voiture.getClient().getIdCl());
+		Voiture foundedVoiture = findById(voiture.getId());
+		Marque marque = marqueService.findById(voiture.getMarque().getId());
+		Client client = clientService.findById(voiture.getClient().getId());
 		if (foundedVoiture != null || marque == null || client == null) {
 			return -1;
 		} else if (voiture.getPrix() == 0.0  || voiture.getCouleur() == ""
-				|| voiture.getCouleur() == null || voiture.getMarque().getIdMarq() == 0
-				 || voiture.getClient().getIdCl() == 0) {
+				|| voiture.getCouleur() == null || voiture.getMarque().getId() == 0
+				 || voiture.getClient().getId() == 0) {
 			return -2;
 		} else {
 			voiture.setClient(client);
@@ -70,18 +70,13 @@ public class VoitureServiceImpl implements VoitureService {
 
 	@Override
 	public int update(Voiture voiture) {
-		Voiture foundedVoiture = findByIdVoit(voiture.getIdVoit());
+		Voiture foundedVoiture = findById(voiture.getId());
 		if (foundedVoiture == null) {
 			return -1;
-		} else if (voiture.getPrix() == 0.0 || voiture.getKilometrage() == 0.0
-				|| voiture.getCouleur() == "" || voiture.getCouleur() == null
-				|| voiture.getMarque().getIdMarq() == 0
-				 || voiture.getClient().getIdCl() == 0) {
-			return -2;
 		} else {
-			voiture.setClient(clientService.findByIdCl(voiture.getClient().getIdCl()));
-			voiture.setMarque(marqueService.findByIdMarq(voiture.getMarque().getIdMarq()));
-			voiture.setIdVoit(foundedVoiture.getIdVoit());
+			voiture.setClient(clientService.findById(voiture.getClient().getId()));
+			voiture.setMarque(marqueService.findById(voiture.getMarque().getId()));
+			voiture.setId(foundedVoiture.getId());
 			voitureDao.save(voiture);
 			return 1;
 		}

@@ -3,7 +3,6 @@ package com.tp.spring.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,45 +12,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tp.spring.bean.Voiture;
+import com.tp.spring.entity.Voiture;
 import com.tp.spring.service.fascade.VoitureService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200" })
-@RequestMapping("VenteVoiture/Voiture")
-public class VoitureRest {
+@RequestMapping(path = "/voiture")
+public class VoitureController {
 	
 	@Autowired
 	public VoitureService voitureService;
 	
-	@GetMapping("/idVoit/{idVoit}")
-	public Voiture findByIdVoit(@PathVariable Long idVoit) {
-		return voitureService.findByIdVoit(idVoit);
+	@GetMapping("/{id}")
+	public Voiture findById(@PathVariable Long id) {
+		return voitureService.findById(id);
 	}
 	
-	@GetMapping("/Client/idCl/{idCl}")
-	public Voiture findByClientIdCl(@PathVariable Long idCl) {
-		return voitureService.findByClientIdCl(idCl);
+	@GetMapping("/client/{login}")
+	public Voiture findByClientLogin(@PathVariable String login) {
+		return voitureService.findByClientLogin(login);
 	}
 	
-	@GetMapping("/Marque/libelleMarq/{libelleMarq}")
-	public List<Voiture> findByMarqueLibelleMarq(@PathVariable String libelleMarq) {
-		return voitureService.findByMarqueLibelleMarq(libelleMarq);
+	@GetMapping("/marque/{libelle}")
+	public List<Voiture> findByMarqueLibelle(@PathVariable String libelle) {
+		return voitureService.findByMarqueLibelle(libelle);
 	}
 	
 
-	@DeleteMapping("/idVoit/{idVoit}")
-	public int deleteByIdVoit(@PathVariable Long idVoit) {
-		return voitureService.deleteByIdVoit(idVoit);
+	@DeleteMapping("/delete/{id}")
+	public int deleteById(@PathVariable Long id) {
+		return voitureService.deleteById(id);
 	}
 
 
-	@PostMapping("/")
+	@PostMapping("/save")
 	public int save(@RequestBody Voiture client) {
 		return voitureService.save(client);
 	}
 
-	@PutMapping("/")
+	@PutMapping("/update")
 	public int update(@RequestBody Voiture voiture) {
 		return voitureService.update(voiture);
 	}

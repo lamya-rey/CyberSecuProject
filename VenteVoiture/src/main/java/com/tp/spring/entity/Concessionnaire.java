@@ -1,4 +1,4 @@
-package com.tp.spring.bean;
+package com.tp.spring.entity;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import javax.persistence.OneToMany;
 @Entity
 public class Concessionnaire {
 	@Id
-	private Long idCons ;
-	private String libelleCons; 
-	private String phoneCons;
+	private Long id ;
+	private String libelle; 
+	private String phone;
 	
-	// i removed mapped by because i didn't put the relation in adresse and marque entity it gives an error
+	
 	
 	@OneToMany
 	private List<Adresse> adresses;
@@ -24,24 +24,24 @@ public class Concessionnaire {
 	@ManyToMany
 	private List<Marque> marques; 
 	
-	public Long getIdCons() {
-		return idCons;
+	public Long getId() {
+		return id;
 	}
-	public void setIdCons(Long idCons) {
-		this.idCons = idCons;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public String getLibelleCons() {
-		return libelleCons;
+	public String getLibelle() {
+		return libelle;
 	}
-	public void setLibelleCons(String libelleCons) {
-		this.libelleCons = libelleCons;
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
-	public String getPhoneCons() {
-		return phoneCons;
+	public String getPhone() {
+		return phone;
 	}
-	public void setPhoneCons(String phoneCons) {
-		this.phoneCons = phoneCons;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	public List<Adresse> getAdresses() {
@@ -61,18 +61,18 @@ public class Concessionnaire {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Concessionnaire(Long idCons, String libelleCons, String phoneCons, List<Adresse> adresses,
+	public Concessionnaire(Long id, String libelle, String phone, List<Adresse> adresses,
 			List<Marque> marques) {
 		super();
-		this.idCons = idCons;
-		this.libelleCons = libelleCons;
-		this.phoneCons = phoneCons;
+		this.id = id;
+		this.libelle = libelle;
+		this.phone = phone;
 		this.adresses = adresses;
 		this.marques = marques;
 	}
 	@Override
 	public String toString() {
-		return "Concessionnaire [idCons=" + idCons + ", libelleCons=" + libelleCons + ", phoneCons=" + phoneCons
+		return "Concessionnaire [id=" + id + ", libelle=" + libelle + ", phone=" + phone
 				+ ", adresses=" + adresses + ", marques=" + marques + "]";
 	}
 	

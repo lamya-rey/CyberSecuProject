@@ -3,7 +3,6 @@ package com.tp.spring.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,34 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tp.spring.bean.Adresse;
+import com.tp.spring.entity.Adresse;
 import com.tp.spring.service.fascade.AdresseService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200" })
-@RequestMapping("VenteVoiture/Adresse")
-public class AdresseRest {
+@RequestMapping(path= "/adresse")
+public class AdresseController {
 
 	@Autowired
 	public AdresseService adresseService;
 
-	@GetMapping("/idAdr/{idAdr}")
-	public Adresse findByIdAdr(@PathVariable Long idAdr) {
-		return adresseService.findByIdAdr(idAdr);
+	@GetMapping("/{id}")
+	public Adresse findById(@PathVariable Long id) {
+		return adresseService.findById(id);
+	}
+	
+	@GetMapping("/search/{libelle}")
+	public Adresse findByLibelle(@PathVariable String libelle) {
+		return adresseService.findByLibelle(libelle);
 	}
 
-	@DeleteMapping("/idAdr/{idAdr}")
-	public int deleteByIdAdr(@PathVariable Long idAdr) {
-		return adresseService.deleteByIdAdr(idAdr);
+	@DeleteMapping("/delete/{id}")
+	public int deleteById(@PathVariable Long id) {
+		return adresseService.deleteById(id);
 	}
 
-	@PostMapping("/")
-	public int save(@RequestBody Adresse marque) {
-		return adresseService.save(marque);
+	@PostMapping("/save")
+	public int save(@RequestBody Adresse adresse) {
+		return adresseService.save(adresse);
 	}
 
 	
-	@PutMapping("/")
+	@PutMapping("/update")
 	public int update(@RequestBody Adresse adresse) {
 		return adresseService.update(adresse);
 	}

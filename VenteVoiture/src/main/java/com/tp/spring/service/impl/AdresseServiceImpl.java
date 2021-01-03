@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tp.spring.bean.Adresse;
 import com.tp.spring.dao.AdresseDao;
+import com.tp.spring.entity.Adresse;
 import com.tp.spring.service.fascade.AdresseService;
 
 @Service
@@ -17,13 +17,13 @@ public class AdresseServiceImpl implements AdresseService {
 	public AdresseDao adresseDao;
 
 	@Override
-	public Adresse findByIdAdr(Long idAdr) {
-		return adresseDao.findByIdAdr(idAdr);
+	public Adresse findById(Long id) {
+		return adresseDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public int deleteByIdAdr(Long idAdr) {
-		Adresse foundedAdresse = findByIdAdr(idAdr);
+	public int deleteById(Long id) {
+		Adresse foundedAdresse = findById(id);
 		if(foundedAdresse == null) {
 			return -1;
 		}
@@ -36,13 +36,9 @@ public class AdresseServiceImpl implements AdresseService {
 	
 	@Override
 	public int save(Adresse adresse) {
-		Adresse foundedAdresse = findByIdAdr(adresse.getIdAdr());
+		Adresse foundedAdresse = findById(adresse.getId());
 		if (foundedAdresse != null) {
 			return -1;
-		}else if (adresse.getLibelleAdr() == "" || adresse.getLibelleAdr() == null
-				|| adresse.getVille() == "" || adresse.getVille() == null
-				|| adresse.getPays() == "" || adresse.getPays() == null) {
-			return -2;
 		}
 		 else {
 			adresseDao.save(adresse);
@@ -53,15 +49,11 @@ public class AdresseServiceImpl implements AdresseService {
 	
 	@Override
 	public int update(Adresse adresse) {
-		Adresse foundedAdresse = findByIdAdr(adresse.getIdAdr());
+		Adresse foundedAdresse = findById(adresse.getId());
 		if (foundedAdresse == null) {
 			return -1;
-		} else if (adresse.getLibelleAdr() == "" || adresse.getLibelleAdr() == null
-				|| adresse.getVille() == "" || adresse.getVille() == null
-				|| adresse.getPays() == "" || adresse.getPays() == null) {
-			return -2;
 		} else {
-			adresse.setIdAdr(foundedAdresse.getIdAdr());
+			adresse.setId(foundedAdresse.getId());
 			adresseDao.save(adresse);
 			return 1;
 		}
@@ -70,6 +62,12 @@ public class AdresseServiceImpl implements AdresseService {
 	@Override
 	public List<Adresse> findAll() {
 		return adresseDao.findAll();
+	}
+
+	@Override
+	public Adresse findByLibelle(String libelle) {
+		return adresseDao.findByLibelle(libelle);
+	
 	}
 
 }

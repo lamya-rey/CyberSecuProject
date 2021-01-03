@@ -8,10 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tp.spring.bean.Adresse;
-import com.tp.spring.bean.Concessionnaire;
-import com.tp.spring.bean.Marque;
 import com.tp.spring.dao.ConcessionnaireDao;
+import com.tp.spring.entity.Adresse;
+import com.tp.spring.entity.Concessionnaire;
+import com.tp.spring.entity.Marque;
 import com.tp.spring.service.fascade.AdresseService;
 import com.tp.spring.service.fascade.ConcessionnaireService;
 import com.tp.spring.service.fascade.MarqueService;
@@ -29,23 +29,23 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 	public MarqueService marqueService;
 
 	@Override
-	public Concessionnaire findByIdCons(Long idCons) {
-		return concessionnaireDao.findByIdCons(idCons);
+	public Concessionnaire findById(Long id) {
+		return concessionnaireDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public Concessionnaire findByLibelleCons(String libelleCons) {
-		return concessionnaireDao.findByLibelleCons(libelleCons);
+	public Concessionnaire findByLibelle(String libelle) {
+		return concessionnaireDao.findByLibelle(libelle);
 	}
 	@Transactional
 	@Override
-	public int deleteByLibelleCons(String libelleCons) {
-		Concessionnaire foundedConcessionnaire = findByLibelleCons(libelleCons);
+	public int deleteById(Long id) {
+		Concessionnaire foundedConcessionnaire = findById(id);
 		if(foundedConcessionnaire == null) {
 			return -1;
 		}else {
 			for(Adresse ad:foundedConcessionnaire.getAdresses()) {
-				adresseService.deleteByIdAdr(ad.getIdAdr());
+				adresseService.deleteById(ad.getId());
 			}
 			concessionnaireDao.delete(foundedConcessionnaire);
 			return 1;
@@ -55,32 +55,36 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 	@Transactional
 	@Override
 	public int save(Concessionnaire concessionnaire) {
-		Concessionnaire foundedConcessionnaire = findByIdCons(concessionnaire.getIdCons());
+		Concessionnaire foundedConcessionnaire = findById(concessionnaire.getId());
 		if (foundedConcessionnaire != null) {
 			return -1;
-		} else if (concessionnaire.getLibelleCons() == "" || concessionnaire.getLibelleCons() == null
-				|| concessionnaire.getPhoneCons() == "" || concessionnaire.getPhoneCons() == null
-				|| concessionnaire.getAdresses() == null) {
-			return -2;
-		} else {
+		} 
+		 else {
 			
 			if (concessionnaire.getAdresses().size() > 0) {
 				List<Adresse>  adresses = new ArrayList<Adresse>();
 				for (Adresse ad : concessionnaire.getAdresses()) {
-					adresseService.save(ad);
-					adresses.add(adresseService.findByIdAdr(ad.getIdAdr()));
+					Adresse foundedA = adresseService.findById(ad.getId()); 
+					if(foundedA != null) {
+						adresses.add(ad);
+					}else {
+						if(adresseService.save(ad)>0) {
+					adresses.add(foundedA);
+				   }
 				}
+			}
+					
 				concessionnaire.setAdresses(adresses);
 			}
 			if(concessionnaire.getMarques().size()>0) {
 				List<Marque> marques = new ArrayList<Marque>();
 				for(Marque m : concessionnaire.getMarques()) {
-					Marque foundedM = marqueService.findByIdMarq(m.getIdMarq()); 
+					Marque foundedM = marqueService.findById(m.getId()); 
 					if(foundedM != null) {
 						marques.add(foundedM);
 					}else {
 						if(marqueService.save(m)>0) {
-							marques.add(marqueService.findByIdMarq(m.getIdMarq()));
+							marques.add(foundedM);
 						}
 					}
 				}
@@ -94,13 +98,9 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 	@Transactional
 	@Override
 	public int update(Concessionnaire concessionnaire) {
-		Concessionnaire foundedConcessionnaire = findByIdCons(concessionnaire.getIdCons());
+		Concessionnaire foundedConcessionnaire = findById(concessionnaire.getId());
 		if (foundedConcessionnaire == null) {
 			return -1;
-		} else if (concessionnaire.getLibelleCons() == "" || concessionnaire.getLibelleCons() == null
-				|| concessionnaire.getPhoneCons() == "" || concessionnaire.getPhoneCons() == null
-				|| concessionnaire.getAdresses() == null) {
-			return -2;
 		} else {
 			for (Adresse adresse : foundedConcessionnaire.getAdresses()) {
 				adresseService.update(adresse);
@@ -108,7 +108,7 @@ public class ConcessionnaireServiceImpl implements ConcessionnaireService {
 			for (Marque marque : concessionnaire.getMarques()) {
 				marqueService.update(marque);
 			}
-			concessionnaire.setIdCons(foundedConcessionnaire.getIdCons());
+			concessionnaire.setId(foundedConcessionnaire.getId());
 			concessionnaireDao.save(concessionnaire);
 			return 1;
 		}

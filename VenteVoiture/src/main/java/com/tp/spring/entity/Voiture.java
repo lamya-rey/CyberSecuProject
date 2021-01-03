@@ -1,4 +1,4 @@
-package com.tp.spring.bean;
+package com.tp.spring.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Voiture {
 	@Id
-	private Long idVoit ;
+	private Long id ;
 	private Double prix;
 	private Double kilometrage;
 	private String couleur;	
@@ -19,11 +19,12 @@ public class Voiture {
 	@ManyToOne
 	private Client client;
 	
-	public Long getIdVoit() {
-		return idVoit;
+	//Getter and Setter
+	public Long getId() {
+		return id;
 	}
-	public void setIdVoit(Long idVoit) {
-		this.idVoit = idVoit;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public Double getKilometrage() {
 		return kilometrage;
@@ -56,21 +57,26 @@ public class Voiture {
 		this.prix = prix;
 	}
 	
+	// Méthode renvoie une chaîne de caractères servant à décrire l'objet concerné
 	@Override
 	public String toString() {
-		return "Voiture [idVoit=" + idVoit + ", prix=" + prix + ", kilometrage=" + kilometrage
+		return "Voiture [id=" + id + ", prix=" + prix + ", kilometrage=" + kilometrage
 				+ ", couleur=" + couleur + ", marque=" + marque + ", client=" + client + "]";
 	}
-	public Voiture(Long id, Long idVoit, Double prix, Double kilometrage, String couleur, Marque marque,
+	 
+	//Constructeur paramétré 
+	public Voiture(Long id, Double prix, Double kilometrage, String couleur, Marque marque,
 			Client client) {
 		super();
-		this.idVoit = idVoit;
+		this.id = id;
 		this.prix = prix;
 		this.kilometrage = kilometrage;
 		this.couleur = couleur;
 		this.marque = marque;
 		this.client = client;
 	}
+	
+	//Constructeur par défaut
 	public Voiture() {
 		super();
 		// TODO Auto-generated constructor stub
