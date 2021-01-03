@@ -44,7 +44,7 @@ ex:http://localhost:8080/voiture/client/lamyaray
 
 ##### Sur Postman :
 
-Vous trouverez un fichier de collection postman dans le dossier test
+Vous trouverez un fichier de collection postman dans le dossier tests
 
 ###### Toute méthode de GET comme celle sur navigateur
 
