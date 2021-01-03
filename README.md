@@ -13,7 +13,7 @@ Commande Docker run
 # Tests
 * Sur navigateur :
 
-[GET modèles]
+GET modèles
 
 http://localhost:8080/nom_modèle/
 
@@ -90,6 +90,9 @@ DELETE modèles par id
 http://localhost:8080/nom_modèle/{id}
 
 ex: http://localhost:8080/client/delete/1
+***
+# Surface D'attaque
+![Image text](/Concessionnaire_mermaidjs.png)
 
 
 
