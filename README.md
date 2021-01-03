@@ -47,12 +47,13 @@ http://localhost:8080/voiture/client/{login}
 
 ex:http://localhost:8080/voiture/client/lamyaray
 
-Sur Postman :
+* Sur Postman :
+
 Vous trouverez un fichier de collection postman dans le dossier test
 
 Toute méthode de GET comme celle sur navigateur
 
-POST modèle
+### POST modèle
 
 http://localhost:8080/nom_modèle/save
 
