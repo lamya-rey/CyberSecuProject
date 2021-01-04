@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# VenteVoiture
-=======
+
 #  Cyber Security Project
 Ce projet à pour but de créer une application en indiquant sa surface d'attaque et en identifiant ses vulnérabilités.
 ***
