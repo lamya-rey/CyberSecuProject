@@ -86,7 +86,7 @@ http://localhost:8080/nom_modèle/{id}
 ex: http://localhost:8080/client/delete/1
 ***
 # Surface D'attaque
-
+![Surface d'attaque](../master/Concessionnaire_mermaidjs.png)
 ***
 # Objectif De Sécurité
 
@@ -105,19 +105,4 @@ ex: http://localhost:8080/client/delete/1
 ### AUTEUR
 #### Lamya Rayess lamya.rayess@lacatholille.com 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> refs/remotes/origin/main
 
