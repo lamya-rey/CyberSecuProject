@@ -56,6 +56,7 @@ public class VoitureServiceImpl implements VoitureService {
 		Client client = clientService.findById(voiture.getClient().getId());
 		if (foundedVoiture != null || marque == null || client == null) {
 			return -1;
+		
 		} else {
 			voiture.setClient(client);
 			voiture.setMarque(marque);
