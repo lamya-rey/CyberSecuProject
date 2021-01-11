@@ -28,7 +28,7 @@ ex: http://localhost:8080/client/1
 ###### GET  Adresse,Concessionnaire,Marque par libelle
 http://localhost:8080/nom_modèle/search/{libelle}
 
-ex: http://localhost:8080/marque/search/Dacia
+ex: http://localhost:8080/marque/search/Audi
 
 
 ###### GET Client par login
