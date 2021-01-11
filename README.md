@@ -29,19 +29,19 @@ ex: http://localhost:8080/client/1
 ###### GET  Adresse,Concessionnaire,Marque par libelle
 http://localhost:8080/nom_modèle/search/{libelle}
 
-ex: http://localhost:8080/marque/search/Dacia
+ex: http://localhost:8080/marque/search/Audi
 
 
 ###### GET Client par login
 http://localhost:8080/client/search/{login}
 
-ex:http://localhost:8080/client/search/lamyaray
+ex:http://localhost:8080/client/search/lamya
 
 
 ###### GET Voiture par login Client
 http://localhost:8080/voiture/client/{login}
 
-ex:http://localhost:8080/voiture/client/lamyaray
+ex:http://localhost:8080/voiture/client/lamya
 
 ##### Sur Postman :
 
@@ -83,7 +83,7 @@ ex: http://localhost:8080/voiture/update
 ###### DELETE modèles par id
 http://localhost:8080/nom_modèle/{id}
 
-ex: http://localhost:8080/client/delete/1
+ex: http://localhost:8080/client/delete/11
 ***
 # Surface D'attaque
 ![Surface d'attaque](../master/Concessionnaire_mermaidjs.png)
