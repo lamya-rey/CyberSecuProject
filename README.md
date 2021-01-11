@@ -102,4 +102,4 @@ ex: http://localhost:8080/client/delete/11
 0/5 -> Aucune tracabilité sur qui a fait un changement ou modification et en quel moment.
 ***
 ### AUTEUR
-#### Lamya Rayess lamya.rayess@lacatholille.com 
+#### Lamya Rayess 
