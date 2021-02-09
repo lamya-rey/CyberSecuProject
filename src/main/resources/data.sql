@@ -1,16 +1,3 @@
-INSERT INTO client (id,prenom,  mail, nom, phone, login, password) VALUES
-(1,'Lamya', 'lamyaray97@gmail.com', 'Rayess', '0681719824', 'lamya', 'lamyapass'),
-(2,'Sara',  'sara.audrey@gmail.com', 'Audrey', '0712035848', 'sara','sarapass'),
-(3,'Lina',  'lina.naciri@gmail.com', 'Naciri', '0798426103', 'lina','linapass'),
-(4,'Mehdi',  'mehdi.fraid@gmail.com', 'Fraid', '0612385497', 'mehdi','mehdipass'),
-(5,'Francois',  'froncois.junior@gmail.com', 'Junior', '0631285476', 'francois','francoispass'),
-(6,'Soufiane',  'soufiane.kayis@gmail.com', 'Kayis', '0715243987', 'soufiane','soufianepass'),
-(7,'Sabrine',  'sabrine.ouahi@gmail.com', 'Ouahi', '0618946378', 'sabrine','sabrinepass'),
-(8,'Mari',  'mari.leonie@gmail.com', 'Leonie', '0712369852', 'mari','maripass'),
-(9,'Samir',  'samir.chatrab@gmail.com', 'Chatrab', '0712396485', 'samir','samirpass'),
-(10,'Kacim',  'kacim.laredoute@gmail.com', 'Laredoute', '0712986543','kacim','kacimpass');
-
-
 INSERT INTO concessionnaire (id,libelle,phone) VALUES
 (1, 'S Automobiles', '0762831445'),
 (2, 'Audera', '0712131415'),
