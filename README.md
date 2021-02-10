@@ -5,9 +5,8 @@ Ce projet à pour but de créer une application en indiquant sa surface d'attaqu
 L'application est développée avec JAVA-Spring Boot, et qui à pour objectif la gestion des concessionaires dont on peut ajouter, modifier, supprimer et afficher des clients, marques, voiture, adresses et des concessionnaires.
 ***
 # Installation et Démarrage
-Commande Docker pull
-
-Commande Docker run
+git clone https://github.com/lamya-rey/CyberSecuProject.git 
+Créer une base de donnée MySQL "concessionnaire" vide , et ouvrer le code dans un des logiciels : eclipse , intelliji ou autre et executer le programme   
 
 ***
 # Tests
@@ -28,7 +27,7 @@ ex: http://localhost:8080/client/1
 ###### GET  Adresse,Concessionnaire,Marque par libelle
 http://localhost:8080/nom_modèle/search/{libelle}
 
-ex: http://localhost:8080/marque/search/Audi
+ex: http://localhost:8080/marque/search/Dacia
 
 
 ###### GET Client par login
@@ -44,7 +43,7 @@ ex:http://localhost:8080/voiture/client/lamya
 
 ##### Sur Postman :
 
-Vous trouverez un fichier de collection postman dans le dossier tests
+Vous trouverez un fichier de collection postman dans le dossier tests, vous pouvez l'importer pour effectuer les tests 
 
 ###### Toute méthode de GET comme celle sur navigateur
 
