@@ -87,7 +87,7 @@ ex: http://localhost:8080/client/delete/11
 ![Surface d'attaque](../master/Concessionnaire_mermaidjs.png)
 ***
 # Sécurité
-[embed]https://github.com/lamya-rey/CyberSecuProject/sécurité.pdf[/embed]
+[Sécurité]https://github.com/lamya-rey/CyberSecuProject/sécurité.pdf
 ***
 # Objectif De Sécurité
 
